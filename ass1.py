@@ -2,11 +2,12 @@ import os
 import sys
 import numpy as np
 import pandas as pd
-import matplotlib.image as mpimg
-import matplotlib.pyplot as plt
+from matplotlib import image as mpimg
+from matplotlib import pyplot as plt
 from skimage import color, io
 import scipy
 from PIL import Image, ImageDraw
+import cv2 as cv
 
 def readfile_as_dict(path):
     with open(path) as f:
@@ -23,13 +24,11 @@ def readfile_as_dict(path):
                 ans_dict[key] = value
     return ans_dict
 
-images = {}
-for i in range(1, 5001):
-    index = str(i).zfill(4)
-    images[index] = Image.open('Images\\{}.jpg'.format(index))
-
 ground_truth_dict = readfile_as_dict('examples\\example_result\\rank_groundtruth.txt')
 ranklist_example_dict = readfile_as_dict('examples\\example_result\\rankList.txt')
+given_boundary_boxes = [list(open('Images\\{}'.format(file)).readline().rstrip('\n').split()) for file in os.listdir('Images') if file.endswith('.txt')]
+images = {str(i).zfill(4): Image.open('Images\\{}.jpg'.format(str(i).zfill(4))) for i in range(1, 5001)}
 
-print(ground_truth_dict)
-print(ranklist_example_dict)
+print(images)
+print(given_boundary_boxes)
+print(len(given_boundary_boxes))
