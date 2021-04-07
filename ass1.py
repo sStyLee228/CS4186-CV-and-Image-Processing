@@ -26,10 +26,10 @@ def readfile_as_dict(path):
 images = {}
 for i in range(1, 5001):
     index = str(i).zfill(4)
-    images[index] = Image.open('Images\{}.jpg'.format(index))
+    images[index] = Image.open('Images\\{}.jpg'.format(index))
 
-ground_truth_dict = readfile_as_dict('examples\example_result\rank_groundtruth.txt')
-ranklist_example_dict = readfile_as_dict('examples\example_result\rankList.txt')
+ground_truth_dict = readfile_as_dict('examples\\example_result\\rank_groundtruth.txt')
+ranklist_example_dict = readfile_as_dict('examples\\example_result\\rankList.txt')
 
 print(ground_truth_dict)
 print(ranklist_example_dict)
