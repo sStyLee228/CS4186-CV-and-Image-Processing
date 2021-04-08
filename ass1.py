@@ -12,10 +12,8 @@ import cv2 as cv
 def readfile_as_dict(path):
     with open(path) as f:
         file = f.readlines()
-
     ans_list = [line.strip() for line in file]
     ans_dict = {}
-
     for line in ans_list:
         for i, char in enumerate(line):
             if char == ':':
